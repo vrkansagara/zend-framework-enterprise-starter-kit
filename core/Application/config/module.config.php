@@ -17,21 +17,9 @@ use Zend\ServiceManager\Factory\InvokableFactory;
 return [
     'navigation' => [
         'default' => [
-//            [
-//                'label' => 'Registration',
-//                'route' => 'registration',
-//            ],
-//            [
-//                'label' => 'Images',
-//                'route' => 'images',
-//            ],
             [
                 'label' => 'Home',
                 'route' => 'home',
-            ],
-            [
-                'label' => 'Contact us',
-                'route' => 'contact',
             ],
             [
                 'label' => 'Album',
@@ -80,10 +68,10 @@ return [
                     ],
                 ],
             ],
-//            [
-//                'label' => 'Login',
-//                'route' => 'backend',
-//            ],
+            [
+                'label' => 'Contact us',
+                'route' => 'contact',
+            ],
         ],
     ],
     'router' => [

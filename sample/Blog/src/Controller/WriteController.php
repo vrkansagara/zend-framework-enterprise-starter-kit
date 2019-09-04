@@ -40,7 +40,7 @@ class WriteController extends AbstractActionController
         $response = parent::onDispatch($e);
 
         // Set alternative layout
-        $this->layout()->setTemplate('layout/layout2');
+        $this->layout()->setTemplate('layout/layout');
 
         // Return the response
         return $response;

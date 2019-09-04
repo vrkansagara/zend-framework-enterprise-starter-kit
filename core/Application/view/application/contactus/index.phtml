@@ -33,11 +33,6 @@ $form->get('submit')->setAttributes(['class'=>'btn btn-primary']);
         <?= $this->form()->openTag($form); ?>
 
         <div class="form-group">
-            <?= $this->formLabel($form->get('file')); ?>
-            <?= $this->formElement($form->get('file')); ?>
-            <?= $this->formElementErrors($form->get('file')); ?>
-        </div>
-        <div class="form-group">
             <?= $this->formLabel($form->get('email')); ?>
             <?= $this->formElement($form->get('email')); ?>
             <?= $this->formElementErrors($form->get('email')); ?>
