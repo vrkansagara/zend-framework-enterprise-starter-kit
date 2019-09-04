@@ -12,7 +12,7 @@ use Zend\ModuleManager\Feature\ConfigProviderInterface;
 
 class Module implements AutoloaderProviderInterface, ConfigProviderInterface
 {
-    const VERSION = '3.0.3-dev';
+    const VERSION = '1.0.0';
 
     public function getConfig()
     {
