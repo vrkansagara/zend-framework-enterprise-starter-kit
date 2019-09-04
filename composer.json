@@ -2,7 +2,7 @@
     "name": "vrkansagara/zend-framework-enterprise-starter-kit",
     "description": "Enterprise Web application starter kit using Zend Framework 3",
     "type": "project",
-    "license": "BSD-3-Clause",
+    "license": "MIT",
     "keywords": [
         "framework",
         "mvc",
