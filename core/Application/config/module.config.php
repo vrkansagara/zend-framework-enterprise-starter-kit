@@ -14,66 +14,71 @@ use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
-return [
-    'navigation' => [
-        'default' => [
-            [
-                'label' => 'Home',
-                'route' => 'home',
-            ],
-            [
-                'label' => 'Album',
-                'route' => 'album',
-                'pages' => [
-                    [
-                        'label' => 'Add',
-                        'route' => 'album',
-                        'action' => 'add',
-                    ],
-                    [
-                        'label' => 'Edit',
-                        'route' => 'album',
-                        'action' => 'edit',
-                    ],
-                    [
-                        'label' => 'Delete',
-                        'route' => 'album',
-                        'action' => 'delete',
-                    ],
+$navigation = [
+    'default' => [
+        [
+            'label' => 'Home',
+            'route' => 'home'
+        ],
+        [
+            'label' => 'Album',
+            'route' => 'album',
+            'pages' => [
+                [
+                    'label' => 'Add',
+                    'route' => 'album',
+                    'action' => 'add',
                 ],
-            ],
-            [
-                'label' => 'Blog',
-                'route' => 'blog',
-                'pages' => [
-                    [
-                        'label' => 'Detail',
-                        'route' => 'blog',
-                        'action' => 'detail',
-                    ],
-                    [
-                        'label' => 'Add',
-                        'route' => 'blog',
-                        'action' => 'add',
-                    ],
-                    [
-                        'label' => 'Edit',
-                        'route' => 'blog',
-                        'action' => 'edit',
-                    ],
-                    [
-                        'label' => 'Delete',
-                        'route' => 'blog',
-                        'action' => 'delete',
-                    ],
+                [
+                    'label' => 'Edit',
+                    'route' => 'album',
+                    'action' => 'edit',
                 ],
-            ],
-            [
-                'label' => 'Contact us',
-                'route' => 'contact',
+                [
+                    'label' => 'Delete',
+                    'route' => 'album',
+                    'action' => 'delete',
+                ],[
+                    'label' => 'Info',
+                    'route' => 'album',
+                    'action' => 'info',
+                ],
             ],
         ],
+        [
+            'label' => 'Blog',
+            'route' => 'blog',
+            'pages' => [
+                [
+                    'label' => 'Detail',
+                    'route' => 'blog',
+                    'action' => 'detail',
+                ],
+                [
+                    'label' => 'Add',
+                    'route' => 'blog/add',
+                    'action' => 'add',
+                ],
+                [
+                    'label' => 'Edit',
+                    'route' => 'blog/add',
+                    'action' => 'edit',
+                ],
+                [
+                    'label' => 'Delete',
+                    'route' => 'blog/add',
+                    'action' => 'delete',
+                ],
+            ],
+        ],
+        [
+            'label' => 'Contact us',
+            'route' => 'contact',
+        ],
     ],
+];
+return [
+    'navigation' => $navigation,
     'router' => [
         'routes' => [
             'home' => [

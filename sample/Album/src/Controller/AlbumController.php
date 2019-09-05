@@ -41,10 +41,8 @@ class AlbumController extends AbstractActionController
 
     public function addAction()
     {
-
-
         $javaScript = <<< JS
-alert('here');
+console.log('Javascript added from controller');
 JS;
 
         $this->footerScript->appendScript($javaScript);
@@ -136,5 +134,11 @@ JS;
             'id' => $id,
             'album' => $this->table->getAlbum($id),
         ];
+    }
+
+    public function infoAction()
+    {
+        return new ViewModel();
+
     }
 }

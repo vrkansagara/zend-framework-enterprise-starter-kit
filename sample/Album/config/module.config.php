@@ -8,11 +8,7 @@ use Zend\Router\Http\Segment;
 return [
     'db' => [
         'driver' => 'Pdo',
-//        'dsn'            => 'mysql:dbname=blog;host=localhost',
-        'dsn' => sprintf('sqlite:%s/data/zftutorial.db', realpath(getcwd())),
-        'driver_options' => [
-//            \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
-        ],
+        'dsn' => sprintf('sqlite:%s/../data/album.db', __DIR__),
     ],
     // The following section is new and should be added to your file:
     'router' => [
