@@ -1,39 +1,55 @@
 {
-    "name": "vrkansagara/zend-framework-enterprise-starter-kit",
-    "description": "Enterprise Web application starter kit using Zend Framework 3",
-    "type": "project",
-    "license": "MIT",
-    "keywords": [
-        "framework",
-        "mvc",
-        "zf"
-    ],
-    "homepage": "https://vrkansagara.in/",
-    "minimum-stability": "stable",
-    "prefer-stable": true,
-    "require": {
-        "zendframework/zend-mvc": "^3.1",
-        "doctrine/doctrine-orm-module": "^2.1",
-        "zendframework/zend-navigation": "^2.9",
-        "zendframework/zend-form": "^2.14",
-        "zendframework/zend-i18n": "^2.9",
-        "zendframework/zend-mail": "^2.10",
-        "zendframework/zend-paginator": "^2.8",
-        "zendframework/zend-validator": "^2.12",
-        "zendframework/zend-db": "^2.10",
-        "doctrine/migrations": "^2.1"
-    },
-    "autoload": {
-        "psr-4": {
-            "Application\\": "core/Application/src/",
-            "Album\\": "sample/Album/src/",
-            "Blog\\": "sample/Blog/src/"
-        }
-    },
-    "require-dev": {
-        "roave/security-advisories": "dev-master"
-    },
-    "scripts": {
-        "serve": "php -S 0.0.0.0:8090 -t public public/index.php"
+  "name": "vrkansagara/zend-framework-enterprise-starter-kit",
+  "description": "Enterprise Web application starter kit using Zend Framework 3",
+  "type": "project",
+  "license": "MIT",
+  "keywords": [
+    "framework",
+    "mvc",
+    "zf"
+  ],
+  "homepage": "https://vrkansagara.in/",
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "require": {
+    "zendframework/zend-mvc": "^3.1",
+    "doctrine/doctrine-orm-module": "^2.1",
+    "zendframework/zend-navigation": "^2.9",
+    "zendframework/zend-form": "^2.14",
+    "zendframework/zend-i18n": "^2.9",
+    "zendframework/zend-mail": "^2.10",
+    "zendframework/zend-paginator": "^2.8",
+    "zendframework/zend-validator": "^2.12",
+    "zendframework/zend-db": "^2.10",
+    "doctrine/migrations": "^2.1",
+    "zendframework/zend-console": "^2.8",
+    "squizlabs/php_codesniffer": "^3.4",
+    "nesbot/carbon": "^2.24",
+    "symfony/console": "^4.3",
+    "san/san-session-toolbar": "^2.0",
+    "zfcampus/zf-development-mode": "^3.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Application\\": "core/Application/src/",
+      "Album\\": "sample/Album/src/",
+      "Blog\\": "sample/Blog/src/"
     }
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-master",
+    "zendframework/zend-developer-tools": "^1.2"
+  },
+  "scripts": {
+    "cs-check": "./vendor/bin/phpcs",
+    "cs-fix": "./vendor/bin/phpcbf",
+    "development-disable": "zf-development-mode disable",
+    "development-enable": "zf-development-mode enable",
+    "development-status": "zf-development-mode status",
+    "post-create-project-cmd": [
+      "@development-enable"
+    ],
+    "serve": "php -S 0.0.0.0:8090 -t public public/index.php",
+    "test": "phpunit"
+  }
 }

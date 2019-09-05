@@ -51,19 +51,19 @@ class ImageManager
 
         // Check whether the directory already exists, and if not,
         // create the directory.
-        if(!is_dir($this->saveToDir)) {
-            if(!mkdir($this->saveToDir)) {
+        if (! is_dir($this->saveToDir)) {
+            if (! mkdir($this->saveToDir)) {
                 throw new \Exception('Could not create directory for uploads: '. error_get_last());
             }
         }
 
         // Scan the directory and create the list of uploaded files.
-        $files = array();
+        $files = [];
         $handle  = opendir($this->saveToDir);
         while (false !== ($entry = readdir($handle))) {
-
-            if($entry=='.' || $entry=='..')
+            if ($entry == '.' || $entry == '..') {
                 continue; // Skip current dir and parent dir.
+            }
 
             $files[] = $entry;
         }
@@ -80,7 +80,7 @@ class ImageManager
     public function getImageFileInfo($filePath)
     {
         // Try to open file
-        if (!is_readable($filePath)) {
+        if (! is_readable($filePath)) {
             return false;
         }
 
@@ -90,8 +90,9 @@ class ImageManager
         // Get MIME type of the file.
         $finfo = finfo_open(FILEINFO_MIME);
         $mimeType = finfo_file($finfo, $filePath);
-        if($mimeType===false)
+        if ($mimeType === false) {
             $mimeType = 'application/octet-stream';
+        }
 
         return [
             'size' => $fileSize,
@@ -116,27 +117,38 @@ class ImageManager
      * @param int $desiredWidth
      * @return string Resulting file name.
      */
-    public  function resizeImage($filePath, $desiredWidth = 240)
+    public function resizeImage($filePath, $desiredWidth = 240)
     {
         // Get original image dimensions.
         list($originalWidth, $originalHeight) = getimagesize($filePath);
 
         // Calculate aspect ratio
-        $aspectRatio = $originalWidth/$originalHeight;
+        $aspectRatio = $originalWidth / $originalHeight;
         // Calculate the resulting height
-        $desiredHeight = $desiredWidth/$aspectRatio;
+        $desiredHeight = $desiredWidth / $aspectRatio;
 
         // Get image info
         $fileInfo = $this->getImageFileInfo($filePath);
 
         // Resize the image
         $resultingImage = imagecreatetruecolor($desiredWidth, $desiredHeight);
-        if (substr($fileInfo['type'], 0, 9) =='image/png')
+        if (substr($fileInfo['type'], 0, 9) == 'image/png') {
             $originalImage = imagecreatefrompng($filePath);
-        else
+        } else {
             $originalImage = imagecreatefromjpeg($filePath);
-        imagecopyresampled($resultingImage, $originalImage, 0, 0, 0, 0,
-            $desiredWidth, $desiredHeight, $originalWidth, $originalHeight);
+        }
+        imagecopyresampled(
+            $resultingImage,
+            $originalImage,
+            0,
+            0,
+            0,
+            0,
+            $desiredWidth,
+            $desiredHeight,
+            $originalWidth,
+            $originalHeight
+        );
 
         // Save the resized image to temporary location
         $tmpFileName = @tempnam("/tmp", "FOO");
@@ -146,6 +158,3 @@ class ImageManager
         return $tmpFileName;
     }
 }
-
-
-

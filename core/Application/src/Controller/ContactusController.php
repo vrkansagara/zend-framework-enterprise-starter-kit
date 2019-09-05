@@ -2,7 +2,6 @@
 
 namespace Application\Controller;
 
-
 use Application\Form\ContactForm;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
@@ -24,7 +23,6 @@ class ContactusController extends AbstractActionController
 
         // Check if user has submitted the form
         if ($this->getRequest()->isPost()) {
-
             $request = $this->getRequest();
             $data = array_merge_recursive(
                 $request->getPost()->toArray(),
@@ -38,10 +36,9 @@ class ContactusController extends AbstractActionController
 
             // Validate form
             if ($form->isValid()) {
-
                 // Get filtered and validated data
                 $data = $form->getData();
-                $this->mailSender->sendMail('vrkansagara@gmail.com',$data['email'],$data['subject'],$data['body']);
+                $this->mailSender->sendMail('vrkansagara@gmail.com', $data['email'], $data['subject'], $data['body']);
                 // ... Do something with the validated data ...
 
                 // Redirect to "Thank You" page
@@ -68,5 +65,4 @@ class ContactusController extends AbstractActionController
     {
         return new ViewModel();
     }
-
 }

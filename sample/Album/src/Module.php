@@ -37,7 +37,7 @@ class Module implements ConfigProviderInterface
     {
         return [
             'factories' => [
-                Controller\AlbumController::class => function ($container){
+                Controller\AlbumController::class => function ($container) {
                     // get service manager
                     $serviceLocator = $container->get('ServiceManager');
                     // get view helper manager

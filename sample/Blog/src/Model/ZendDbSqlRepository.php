@@ -39,8 +39,7 @@ class ZendDbSqlRepository implements PostRepositoryInterface
         HydratorInterface $hydrator,
         Post $postPrototype,
         $tableName
-    )
-    {
+    ) {
         $this->db = $db;
         $this->hydrator = $hydrator;
         $this->postPrototype = $postPrototype;
@@ -61,7 +60,7 @@ class ZendDbSqlRepository implements PostRepositoryInterface
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
 
-        if (!$result instanceof ResultInterface || !$result->isQueryResult()) {
+        if (! $result instanceof ResultInterface || ! $result->isQueryResult()) {
             return [];
         }
 
@@ -86,7 +85,7 @@ class ZendDbSqlRepository implements PostRepositoryInterface
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
 
-        if (!$result instanceof ResultInterface || !$result->isQueryResult()) {
+        if (! $result instanceof ResultInterface || ! $result->isQueryResult()) {
             throw new RuntimeException(sprintf(
                 'Failed retrieving blog post with identifier "%s"; unknown database error.',
                 $id
@@ -97,7 +96,7 @@ class ZendDbSqlRepository implements PostRepositoryInterface
         $resultSet->initialize($result);
         $post = $resultSet->current();
 
-        if (!$post) {
+        if (! $post) {
             throw new InvalidArgumentException(sprintf(
                 'Blog post with identifier "%s" not found.',
                 $id

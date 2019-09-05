@@ -41,10 +41,11 @@ class RegistrationController extends AbstractActionController
         }
 
         // Ensure the step is correct (between 1 and 3).
-        if ($step<1 || $step>3)
+        if ($step < 1 || $step > 3) {
             $step = 1;
+        }
 
-        if ($step==1) {
+        if ($step == 1) {
             // Init user choices.
             $this->sessionContainer->userChoices = [];
         }
@@ -52,16 +53,14 @@ class RegistrationController extends AbstractActionController
         $form = new RegistrationForm($step);
 
         // Check if user has submitted the form
-        if($this->getRequest()->isPost()) {
-
+        if ($this->getRequest()->isPost()) {
             // Fill in the form with POST data
             $data = $this->params()->fromPost();
 
             $form->setData($data);
 
             // Validate form
-            if($form->isValid()) {
-
+            if ($form->isValid()) {
                 // Get filtered and validated data
                 $data = $form->getData();
 
@@ -73,9 +72,11 @@ class RegistrationController extends AbstractActionController
                 $this->sessionContainer->step = $step;
 
                 // If we completed all 3 steps, redirect to Review page.
-                if ($step>3) {
-                    return $this->redirect()->toRoute('registration',
-                        ['action'=>'review']);
+                if ($step > 3) {
+                    return $this->redirect()->toRoute(
+                        'registration',
+                        ['action' => 'review']
+                    );
                 }
 
                 // Go to the next step.
@@ -98,9 +99,9 @@ class RegistrationController extends AbstractActionController
     public function reviewAction()
     {
         // Validate session data.
-        if(!isset($this->sessionContainer->step) ||
-            $this->sessionContainer->step<=3 ||
-            !isset($this->sessionContainer->userChoices)) {
+        if (! isset($this->sessionContainer->step) ||
+            $this->sessionContainer->step <= 3 ||
+            ! isset($this->sessionContainer->userChoices)) {
             throw new \Exception('Sorry, the data is not available for review yet');
         }
 

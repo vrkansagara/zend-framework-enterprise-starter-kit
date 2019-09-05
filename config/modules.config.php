@@ -24,5 +24,4 @@ $frameworkModule = [
     'Zend\Db',
     'Zend\Validator',
 ];
-
 return ArrayUtils::merge($frameworkModule, $applicationModules);

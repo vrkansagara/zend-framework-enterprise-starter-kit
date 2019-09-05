@@ -13,9 +13,11 @@ use Zend\ServiceManager\Factory\FactoryInterface;
  */
 class ImageControllerFactory implements FactoryInterface
 {
-    public function __invoke(ContainerInterface $container,
-                             $requestedName, array $options = null)
-    {
+    public function __invoke(
+        ContainerInterface $container,
+        $requestedName,
+        array $options = null
+    ) {
         $imageManager = $container->get(ImageManager::class);
 
         // Instantiate the controller and inject dependencies

@@ -1,8 +1,6 @@
 <?php
 date_default_timezone_set('UTC');
-// PHP Version 7.3.4
-//phpinfo();
-//exit;
+
 use Zend\Mvc\Application;
 use Zend\Stdlib\ArrayUtils;
 
@@ -10,10 +8,14 @@ use Zend\Stdlib\ArrayUtils;
  * Display all errors when APPLICATION_ENV is development.
  */
 
-$_SERVER['APPLICATION_ENV'] = 'development'; // @fixme Remove before production
 if (isset($_SERVER['APPLICATION_ENV']) && $_SERVER['APPLICATION_ENV'] === 'development') {
     ini_set("error_reporting", E_ALL);
     ini_set("display_errors", 1);
+} else {
+    ini_set("error_reporting", E_ALL & ~E_DEPRECATED & ~E_STRICT);
+    ini_set("display_errors", 0);
+    ini_set("display_startup_errors", 0);
+    ini_set("log_errors", 1);
 }
 
 /**
@@ -23,9 +25,9 @@ if (isset($_SERVER['APPLICATION_ENV']) && $_SERVER['APPLICATION_ENV'] === 'devel
 chdir(dirname(__DIR__));
 
 define('ZF_CLASS_CACHE', 'data/cache/classes.php.cache');
-if (file_exists(ZF_CLASS_CACHE)) {
+//if (file_exists(ZF_CLASS_CACHE)) {
 //    require_once ZF_CLASS_CACHE;
-};
+//}
 
 // Decline static file requests back to the PHP built-in webserver
 if (php_sapi_name() === 'cli-server') {
@@ -39,7 +41,7 @@ if (php_sapi_name() === 'cli-server') {
 // Composer autoloading
 include __DIR__ . '/../vendor/autoload.php';
 
-if (!class_exists(Application::class)) {
+if (! class_exists(Application::class)) {
     throw new RuntimeException(
         "Unable to load application.\n"
         . "- Type `composer install` if you are developing locally.\n"

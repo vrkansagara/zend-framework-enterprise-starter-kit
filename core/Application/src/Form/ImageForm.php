@@ -65,7 +65,6 @@ class ImageForm extends Form
                 'id' => 'submitbutton',
             ],
         ]);
-
     }
 
     /**
@@ -103,11 +102,11 @@ class ImageForm extends Form
                 [
                     'name' => 'FileRenameUpload',
                     'options' => [
-                        'target'=>'./data/upload',
-                        'useUploadName'=>true,
-                        'useUploadExtension'=>true,
-                        'overwrite'=>true,
-                        'randomize'=>false
+                        'target' => './data/upload',
+                        'useUploadName' => true,
+                        'useUploadExtension' => true,
+                        'overwrite' => true,
+                        'randomize' => false
                     ]
                 ]
             ],

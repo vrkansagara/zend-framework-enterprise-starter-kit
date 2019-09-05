@@ -3,7 +3,6 @@
 
 namespace Application\Controller;
 
-
 use Carbon\Carbon;
 use Zend\Form\Element\DateTime;
 use Zend\Mvc\Controller\AbstractActionController;
@@ -18,5 +17,4 @@ class PingController extends AbstractActionController
         ];
         return new JsonModel($responseData);
     }
-
 }

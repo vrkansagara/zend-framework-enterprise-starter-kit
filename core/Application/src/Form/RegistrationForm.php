@@ -18,8 +18,9 @@ class RegistrationForm extends Form
     public function __construct($step)
     {
         // Check input.
-        if (!is_int($step) || $step<1 || $step>3)
+        if (! is_int($step) || $step < 1 || $step > 3) {
             throw new \Exception('Step is invalid');
+        }
 
         // Define form name
         parent::__construct('registration-form');
@@ -36,8 +37,7 @@ class RegistrationForm extends Form
      */
     protected function addElements($step)
     {
-        if ($step==1) {
-
+        if ($step == 1) {
             // Add "email" field
             $this->add([
                 'type'  => 'text',
@@ -85,9 +85,7 @@ class RegistrationForm extends Form
                     'label' => 'Type Password Again',
                 ],
             ]);
-
-        } else if ($step==2) {
-
+        } elseif ($step == 2) {
             // Add "phone" field
             $this->add([
                 'type'  => 'text',
@@ -174,10 +172,7 @@ class RegistrationForm extends Form
                     ],
                 ],
             ]);
-
-
-        } else if ($step==3) {
-
+        } elseif ($step == 3) {
             // Add "billing_plan" field
             $this->add([
                 'type'  => 'select',
@@ -248,8 +243,7 @@ class RegistrationForm extends Form
         $inputFilter = new InputFilter();
         $this->setInputFilter($inputFilter);
 
-        if ($step==1) {
-
+        if ($step == 1) {
             $inputFilter->add([
                 'name'     => 'email',
                 'required' => true,
@@ -318,9 +312,7 @@ class RegistrationForm extends Form
                     ],
                 ],
             ]);
-
-        } else if ($step==2) {
-
+        } elseif ($step == 2) {
             $inputFilter->add([
                 'name'     => 'phone',
                 'required' => true,
@@ -351,7 +343,7 @@ class RegistrationForm extends Form
                     ['name' => 'StringTrim'],
                 ],
                 'validators' => [
-                    ['name'=>'StringLength', 'options'=>['min'=>1, 'max'=>255]]
+                    ['name' => 'StringLength', 'options' => ['min' => 1, 'max' => 255]]
                 ],
             ]);
 
@@ -363,7 +355,7 @@ class RegistrationForm extends Form
                     ['name' => 'StringTrim'],
                 ],
                 'validators' => [
-                    ['name'=>'StringLength', 'options'=>['min'=>1, 'max'=>255]]
+                    ['name' => 'StringLength', 'options' => ['min' => 1, 'max' => 255]]
                 ],
             ]);
 
@@ -375,7 +367,7 @@ class RegistrationForm extends Form
                     ['name' => 'StringTrim'],
                 ],
                 'validators' => [
-                    ['name'=>'StringLength', 'options'=>['min'=>1, 'max'=>32]]
+                    ['name' => 'StringLength', 'options' => ['min' => 1, 'max' => 32]]
                 ],
             ]);
 
@@ -387,7 +379,7 @@ class RegistrationForm extends Form
                 ],
                 'validators' => [
                     ['name' => 'IsInt'],
-                    ['name'=>'Between', 'options'=>['min'=>0, 'max'=>999999]]
+                    ['name' => 'Between', 'options' => ['min' => 0, 'max' => 999999]]
                 ],
             ]);
 
@@ -401,12 +393,10 @@ class RegistrationForm extends Form
                     ['name' => 'StringToUpper'],
                 ],
                 'validators' => [
-                    ['name'=>'StringLength', 'options'=>['min'=>2, 'max'=>2]]
+                    ['name' => 'StringLength', 'options' => ['min' => 2, 'max' => 2]]
                 ],
             ]);
-
-        } else if ($step==3) {
-
+        } elseif ($step == 3) {
             // Add input for "billing_plan" field
             $inputFilter->add([
                 'name'     => 'billing_plan',
@@ -417,7 +407,7 @@ class RegistrationForm extends Form
                     [
                         'name' => 'InArray',
                         'options' => [
-                            'haystack'=>[
+                            'haystack' => [
                                 'Free',
                                 'Bronze',
                                 'Silver',
@@ -439,7 +429,7 @@ class RegistrationForm extends Form
                     [
                         'name' => 'InArray',
                         'options' => [
-                            'haystack'=>[
+                            'haystack' => [
                                 'PayPal',
                                 'Visa',
                                 'MasterCard',

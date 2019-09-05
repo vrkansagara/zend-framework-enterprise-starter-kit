@@ -52,7 +52,7 @@ JS;
 
         $request = $this->getRequest();
 
-        if (!$request->isPost()) {
+        if (! $request->isPost()) {
             return ['form' => $form];
         }
 
@@ -60,7 +60,7 @@ JS;
         $form->setInputFilter($album->getInputFilter());
         $form->setData($request->getPost());
 
-        if (!$form->isValid()) {
+        if (! $form->isValid()) {
             return ['form' => $form];
         }
 
@@ -93,14 +93,14 @@ JS;
         $request = $this->getRequest();
         $viewData = ['id' => $id, 'form' => $form];
 
-        if (!$request->isPost()) {
+        if (! $request->isPost()) {
             return $viewData;
         }
 
         $form->setInputFilter($album->getInputFilter());
         $form->setData($request->getPost());
 
-        if (!$form->isValid()) {
+        if (! $form->isValid()) {
             return $viewData;
         }
 
@@ -113,7 +113,7 @@ JS;
     public function deleteAction()
     {
         $id = (int)$this->params()->fromRoute('id', 0);
-        if (!$id) {
+        if (! $id) {
             return $this->redirect()->toRoute('album');
         }
 
@@ -139,6 +139,5 @@ JS;
     public function infoAction()
     {
         return new ViewModel();
-
     }
 }

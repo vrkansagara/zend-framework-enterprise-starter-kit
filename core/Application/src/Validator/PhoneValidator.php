@@ -32,10 +32,10 @@ class PhoneValidator extends AbstractValidator
     public function __construct($options = null)
     {
         // Set filter options (if provided).
-        if(is_array($options)) {
-
-            if(isset($options['format']))
+        if (is_array($options)) {
+            if (isset($options['format'])) {
                 $this->setFormat($options['format']);
+            }
         }
 
         // Call the parent class constructor.
@@ -46,8 +46,8 @@ class PhoneValidator extends AbstractValidator
     public function setFormat($format)
     {
         // Check input argument.
-        if($format!=self::PHONE_FORMAT_LOCAL &&
-            $format!=self::PHONE_FORMAT_INTL) {
+        if ($format != self::PHONE_FORMAT_LOCAL &&
+            $format != self::PHONE_FORMAT_INTL) {
             throw new \Exception('Invalid format argument passed.');
         }
 
@@ -57,7 +57,7 @@ class PhoneValidator extends AbstractValidator
     // Validates a phone number.
     public function isValid($value)
     {
-        if(!is_scalar($value)) {
+        if (! is_scalar($value)) {
             $this->error(self::NOT_SCALAR);
             return false; // Phone number must be a scalar.
         }
@@ -69,7 +69,7 @@ class PhoneValidator extends AbstractValidator
 
         // Determine the correct length and pattern of the phone number,
         // depending on the format.
-        if($format == self::PHONE_FORMAT_INTL) {
+        if ($format == self::PHONE_FORMAT_INTL) {
             $correctLength = 16;
             $pattern = '/^\d \(\d{3}\) \d{3}-\d{4}$/';
         } else { // self::PHONE_FORMAT_LOCAL
@@ -79,18 +79,20 @@ class PhoneValidator extends AbstractValidator
 
         // First check phone number length
         $isValid = false;
-        if(strlen($value)==$correctLength) {
+        if (strlen($value) == $correctLength) {
             // Check if the value matches the pattern.
-            if(preg_match($pattern, $value))
+            if (preg_match($pattern, $value)) {
                 $isValid = true;
+            }
         }
 
         // If there was an error, set error message.
-        if(!$isValid) {
-            if($format==self::PHONE_FORMAT_INTL)
+        if (! $isValid) {
+            if ($format == self::PHONE_FORMAT_INTL) {
                 $this->error(self::INVALID_FORMAT_INTL);
-            else
+            } else {
                 $this->error(self::INVALID_FORMAT_LOCAL);
+            }
         }
 
         // Return validation result.

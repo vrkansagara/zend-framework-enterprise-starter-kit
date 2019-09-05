@@ -22,9 +22,9 @@ class PhoneFilter extends AbstractFilter
     {
         // Set filter options (if provided).
         if (is_array($options)) {
-
-            if (isset($options['format']))
+            if (isset($options['format'])) {
                 $this->setFormat($options['format']);
+            }
         }
     }
 
@@ -49,7 +49,7 @@ class PhoneFilter extends AbstractFilter
     // Filters a phone number.
     public function filter($value)
     {
-        if (!is_scalar($value)) {
+        if (! is_scalar($value)) {
             // Return non-scalar value unfiltered.
             return $value;
         }

@@ -1,7 +1,6 @@
 <?php
 namespace Blog\Controller;
 
-
 use http\Exception\InvalidArgumentException;
 use Zend\Mvc\Controller\AbstractActionController;
 
@@ -25,7 +24,7 @@ class DownloadController extends AbstractActionController
 
         // Try to open file
         $path = './data/download/' . $fileName;
-        if (!is_readable($path)) {
+        if (! is_readable($path)) {
             // Set 404 Not Found status code
             $this->getResponse()->setStatusCode(404);
             return;
@@ -55,6 +54,4 @@ class DownloadController extends AbstractActionController
         // Return Response to avoid default view rendering
         return $this->getResponse();
     }
-
-
 }

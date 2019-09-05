@@ -25,7 +25,6 @@ class ContactForm extends Form
 
         // Set binary content encoding.
         $this->setAttribute('enctype', 'multipart/form-data');
-
     }
 
     // This method adds elements to form (input fields and
@@ -148,8 +147,7 @@ class ContactForm extends Form
                         ],
                     ],
                 ],
-            ]
-        );
+            ]);
 
         $inputFilter->add([
                 'name' => 'subject',
@@ -168,8 +166,7 @@ class ContactForm extends Form
                         ],
                     ],
                 ],
-            ]
-        );
+            ]);
 
         $inputFilter->add([
                 'name' => 'body',
@@ -186,7 +183,6 @@ class ContactForm extends Form
                         ],
                     ],
                 ],
-            ]
-        );
+            ]);
     }
 }

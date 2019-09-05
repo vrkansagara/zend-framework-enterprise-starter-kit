@@ -35,7 +35,7 @@ class ImageController extends AbstractActionController
 
         // Render the view template
         return new ViewModel([
-            'files'=>$files
+            'files' => $files
         ]);
     }
 
@@ -49,8 +49,7 @@ class ImageController extends AbstractActionController
         $form = new ImageForm();
 
         // Check if user has submitted the form
-        if($this->getRequest()->isPost()) {
-
+        if ($this->getRequest()->isPost()) {
             // Make certain to merge the files info!
             $request = $this->getRequest();
             $data = array_merge_recursive(
@@ -62,13 +61,12 @@ class ImageController extends AbstractActionController
             $form->setData($data);
 
             // Validate form
-            if($form->isValid()) {
-
+            if ($form->isValid()) {
                 // Move uploaded file to its destination directory.
                 $data = $form->getData();
 
                 // Redirect the user to "Image Gallery" page
-                return $this->redirect()->toRoute('images', ['action'=>'index']);
+                return $this->redirect()->toRoute('images', ['action' => 'index']);
             }
         }
 
@@ -91,21 +89,21 @@ class ImageController extends AbstractActionController
         $isThumbnail = (bool)$this->params()->fromQuery('thumbnail', false);
 
         // Validate input parameters
-        if (empty($fileName) || strlen($fileName)>128) {
+        if (empty($fileName) || strlen($fileName) > 128) {
             throw new \Exception('File name is empty or too long');
         }
 
         // Get path to image file
         $fileName = $this->imageManager->getImagePathByName($fileName);
 
-        if($isThumbnail) {
+        if ($isThumbnail) {
             // Resize the image
             $fileName = $this->imageManager->resizeImage($fileName);
         }
 
         // Get image file info (size and MIME type).
         $fileInfo = $this->imageManager->getImageFileInfo($fileName);
-        if ($fileInfo===false) {
+        if ($fileInfo === false) {
             // Set 404 Not Found status code
             $this->getResponse()->setStatusCode(404);
             return;
@@ -119,7 +117,7 @@ class ImageController extends AbstractActionController
 
         // Write file content
         $fileContent = $this->imageManager->getImageFileContent($fileName);
-        if($fileContent!==false) {
+        if ($fileContent !== false) {
             $response->setContent($fileContent);
         } else {
             // Set 500 Server Error status code
@@ -127,7 +125,7 @@ class ImageController extends AbstractActionController
             return;
         }
 
-        if($isThumbnail) {
+        if ($isThumbnail) {
             // Remove temporary thumbnail image file.
             unlink($fileName);
         }
@@ -136,5 +134,3 @@ class ImageController extends AbstractActionController
         return $this->getResponse();
     }
 }
-
-

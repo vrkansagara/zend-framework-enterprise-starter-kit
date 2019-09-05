@@ -14,7 +14,6 @@ class MailSender
     {
         $result = false;
         try {
-
             // Create E-mail message
             $mail = new Message();
             $mail->setFrom($sender);
