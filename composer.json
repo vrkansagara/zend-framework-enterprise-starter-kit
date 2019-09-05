@@ -6,9 +6,9 @@
   "keywords": [
     "framework",
     "mvc",
-    "zf"
+    "zf3"
   ],
-  "homepage": "https://vrkansagara.in/",
+  "homepage": "https://zend-framework-enterprise-starter-kit.vrkansagara.in/",
   "minimum-stability": "stable",
   "prefer-stable": true,
   "require": {
@@ -26,7 +26,8 @@
     "nesbot/carbon": "^2.24",
     "symfony/console": "^4.3",
     "san/san-session-toolbar": "^2.0",
-    "zfcampus/zf-development-mode": "^3.2"
+    "zfcampus/zf-development-mode": "^3.2",
+    "zendframework/zend-barcode": "^2.7"
   },
   "autoload": {
     "psr-4": {

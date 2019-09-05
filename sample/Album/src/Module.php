@@ -3,11 +3,13 @@
 namespace Album;
 
 use Album\Model\AlbumTable;
+use Zend\Db\Adapter\Adapter;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
+use function Couchbase\defaultDecoder;
 
 class Module implements ConfigProviderInterface
 {
@@ -25,7 +27,8 @@ class Module implements ConfigProviderInterface
                     return new Model\AlbumTable($tableGateway);
                 },
                 Model\AlbumTableGateway::class => function ($container) {
-                    $dbAdapter = $container->get(AdapterInterface::class);
+                    $configArray = $this->getConfig();
+                    $dbAdapter = new Adapter($configArray['db']);
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new Model\Album());
                     return new TableGateway('album', $dbAdapter, null, $resultSetPrototype);

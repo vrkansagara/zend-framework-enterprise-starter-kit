@@ -26,9 +26,7 @@ class ListController extends AbstractActionController
 
         // Set alternative layout
         $this->layout()->setTemplate('layout/layout');
-        $layoutData = [
-            'company' => 'XYZ Co.'
-        ];
+        $layoutData = [];
         $this->layout()->setVariables($layoutData);
 
         // Return the response
@@ -43,9 +41,6 @@ class ListController extends AbstractActionController
 
     public function indexAction()
     {
-        $request = $this->getRequest();
-        $response = $this->getResponse();
-        $currentEvent = $this->getEvent();
         return new ViewModel([
             'posts' => $this->postRepository->findAllPosts(true),
         ]);
@@ -57,7 +52,6 @@ class ListController extends AbstractActionController
         try {
             $post = $this->postRepository->findPost($id);
         } catch (\InvalidArgumentException $ex) {
-//            throw new \Exception($ex->getMessage());
             return $this->redirect()->toRoute('blog');
         }
         return new ViewModel([

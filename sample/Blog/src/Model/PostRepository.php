@@ -3,7 +3,7 @@
 
 namespace Blog\Model;
 
-class PostRepository implements PostRepositoryInterface
+class PostRepository
 {
     private $data = [
         1 => [

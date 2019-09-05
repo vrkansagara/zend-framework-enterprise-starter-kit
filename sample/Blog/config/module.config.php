@@ -23,6 +23,10 @@ use Zend\ServiceManager\Factory\InvokableFactory;
 
 // Continue from https://docs.zendframework.com/tutorials/in-depth-guide/models-and-servicemanager/
 return [
+    'db' => [
+        'driver' => 'Pdo',
+        'dsn' => sprintf('sqlite:%s/../data/blog.db', __DIR__),
+    ],
     // The following section is new and should be added to your file:
     // This lines opens the configuration for the RouteManager
     'router' => [
@@ -130,7 +134,6 @@ return [
     'controllers' => [
         'factories' => [
             ListController::class => ListControllerFactory::class,
-//            ListController::class => LazyControllerAbstractFactory::class,
             WriteController::class => WriteControllerFactory::class,
             DeleteController::class => DeleteControllerFactory::class,
             Controller\DownloadController::class => InvokableFactory::class
@@ -144,7 +147,6 @@ return [
 
         ],
         'factories' => [
-            PostRepository::class => InvokableFactory::class,
             ZendDbSqlRepository::class => ZendDbSqlRepositoryFactory::class,
             PostCommand::class => InvokableFactory::class,
             ZendDbSqlCommand::class => ZendDbSqlCommandFactory::class,
