@@ -1,10 +1,7 @@
 <?php
-
 namespace Blogwithorm;
 
-use Zend\ModuleManager\Feature\ConfigProviderInterface;
-
-class Module implements ConfigProviderInterface
+class Module
 {
     public function getConfig()
     {
