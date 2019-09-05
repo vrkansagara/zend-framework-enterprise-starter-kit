@@ -23,5 +23,10 @@ data/DoctrineORMModule/cache/
 demos/
 extras/documentation
 
+
 #PHPCS
 phpcs.xml
+
+#PHPUNIT
+phpunit.xml
+.phpunit.result.cache
