@@ -38,7 +38,7 @@ $navigation = [
                     'label' => 'Delete',
                     'route' => 'album',
                     'action' => 'delete',
-                ],[
+                ], [
                     'label' => 'Info',
                     'route' => 'album',
                     'action' => 'info',
@@ -74,6 +74,17 @@ $navigation = [
         [
             'label' => 'Contact us',
             'route' => 'contact',
+        ], [
+            'label' => 'Image library',
+            'route' => 'library',
+            'pages' => [
+                [
+                    'label' => 'Image upload',
+                    'route' => 'library/upload',
+                    'action' => 'upload',
+                ],
+
+            ]
         ],
     ],
 ];
@@ -121,10 +132,10 @@ return [
                     ],
                 ],
             ],
-            'images' => [
+            'library' => [
                 'type' => Segment::class,
                 'options' => [
-                    'route' => '/images[/:action]',
+                    'route' => '/library[/:action]',
                     'constraints' => [
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*'
                     ],

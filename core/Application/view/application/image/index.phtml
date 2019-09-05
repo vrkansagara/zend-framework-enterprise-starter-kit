@@ -9,7 +9,7 @@ $this->headTitle('Image Gallery');
 </p>
 
 <p>
-    <a href="<?= $this->url('images', ['action' => 'upload']); ?>"
+    <a href="<?= $this->url('library', ['action' => 'upload']); ?>"
        class="btn btn-primary" role="button">Upload More</a>
 </p>
 
@@ -28,7 +28,7 @@ $this->headTitle('Image Gallery');
                 <div class="img-thumbnail">
 
                     <img src="<?= $this->url(
-                        'images',
+                        'library',
                         ['action' => 'file'],
                         ['query' => ['name' => $file, 'thumbnail' => true]]
                     ); ?>">
@@ -37,7 +37,7 @@ $this->headTitle('Image Gallery');
                         <h3><?php echo $file; ?></h3>
                         <p>
                             <a target="_blank" href="<?= $this->url(
-                                'images',
+                                'library',
                                 ['action' => 'file'],
                                 ['query' => ['name' => $file]]
                             ); ?>"

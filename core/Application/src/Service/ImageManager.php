@@ -2,6 +2,7 @@
 /**
  * A service model class encapsulating the functionality for image management.
  */
+
 namespace Application\Service;
 
 /**
@@ -51,20 +52,19 @@ class ImageManager
 
         // Check whether the directory already exists, and if not,
         // create the directory.
-        if (! is_dir($this->saveToDir)) {
-            if (! mkdir($this->saveToDir)) {
-                throw new \Exception('Could not create directory for uploads: '. error_get_last());
+        if (!is_dir($this->saveToDir)) {
+            if (!mkdir($this->saveToDir)) {
+                throw new \Exception('Could not create directory for uploads: ' . error_get_last());
             }
         }
 
         // Scan the directory and create the list of uploaded files.
         $files = [];
-        $handle  = opendir($this->saveToDir);
+        $handle = opendir($this->saveToDir);
         while (false !== ($entry = readdir($handle))) {
-            if ($entry == '.' || $entry == '..') {
+            if (in_array($entry, ['.', '..','.gitkeep','.gitignore'])) {
                 continue; // Skip current dir and parent dir.
             }
-
             $files[] = $entry;
         }
 
@@ -80,7 +80,7 @@ class ImageManager
     public function getImageFileInfo($filePath)
     {
         // Try to open file
-        if (! is_readable($filePath)) {
+        if (!is_readable($filePath)) {
             return false;
         }
 

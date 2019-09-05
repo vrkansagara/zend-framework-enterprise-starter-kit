@@ -66,7 +66,7 @@ class ImageController extends AbstractActionController
                 $data = $form->getData();
 
                 // Redirect the user to "Image Gallery" page
-                return $this->redirect()->toRoute('images', ['action' => 'index']);
+                return $this->redirect()->toRoute('library', ['action' => 'index']);
             }
         }
 
