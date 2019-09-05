@@ -47,7 +47,7 @@
     "development-enable": "zf-development-mode enable",
     "development-status": "zf-development-mode status",
     "post-create-project-cmd": [
-      "@development-enable"
+      "@development-disable"
     ],
     "serve": "php -S 0.0.0.0:8090 -t public public/index.php",
     "test": "phpunit"
