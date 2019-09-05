@@ -1,6 +1,6 @@
 <?php
 
-namespace Blogwithorm\
+namespace Blogwithorm;
 
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 

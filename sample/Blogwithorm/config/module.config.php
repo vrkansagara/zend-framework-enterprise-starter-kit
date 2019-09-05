@@ -3,7 +3,6 @@
 namespace Blogwithorm;
 
 use Blogwithorm\Controller\DeleteController;
-
 use Blogwithorm\Controller\ListController;
 use Blogwithorm\Controller\WriteController;
 use Blogwithorm\Factory\DeleteControllerFactory;
@@ -17,12 +16,26 @@ use Blogwithorm\Model\PostRepository;
 use Blogwithorm\Model\PostRepositoryInterface;
 use Blogwithorm\Model\ZendDbSqlCommand;
 use Blogwithorm\Model\ZendDbSqlRepository;
-use Zend\Mvc\Controller\LazyControllerAbstractFactory;
+use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
+    'doctrine' => [
+        'driver' => [
+            __NAMESPACE__ . '_driver' => [
+                'class' => AnnotationDriver::class,
+                'cache' => 'array',
+                'paths' => [__DIR__ . '/../src/Entity']
+            ],
+            'orm_default' => [
+                'drivers' => [
+                    __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver'
+                ]
+            ]
+        ]
+    ],
     // The following section is new and should be added to your file:
     // This lines opens the configuration for the RouteManager
     'router' => [
@@ -158,7 +171,7 @@ return [
     'view_manager' => [
         //view/{namespace}/{controller}/{action}.phtml
         'template_path_stack' => [
-            'blog' => __DIR__ . '/../view',
+            'blogwithorm' => __DIR__ . '/../view',
         ],
     ],
 ];
