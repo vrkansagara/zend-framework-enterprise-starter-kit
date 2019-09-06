@@ -13,7 +13,6 @@ $applicationModules = [
     'Application',
     'Album',
     'Blog',
-    'Blogwithorm',
     'ZendOutPress'
 ];
 
