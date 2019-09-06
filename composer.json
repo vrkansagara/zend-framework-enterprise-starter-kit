@@ -27,7 +27,9 @@
     "symfony/console": "^4.3",
     "san/san-session-toolbar": "^2.0",
     "zfcampus/zf-development-mode": "^3.2",
-    "zendframework/zend-barcode": "^2.7"
+    "zendframework/zend-barcode": "^2.7",
+    "zendframework/zend-eventmanager": "^3.2",
+    "vrkansagara/zend-out-press": "dev-master"
   },
   "autoload": {
     "psr-4": {

@@ -5,7 +5,6 @@ return [
     'modules' => [
         'ZendDeveloperTools',
         'SanSessionToolbar',
-        'Blogwithorm'
         //    'EdpSuperluminal'
     ],
 
