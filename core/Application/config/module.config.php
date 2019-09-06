@@ -86,6 +86,32 @@ $navigation = [
 
             ]
         ],
+        [
+            'label' => 'Blog with ORM',
+            'route' => 'blogwithorm',
+            'pages' => [
+                [
+                    'label' => 'Detail',
+                    'route' => 'blogwithorm',
+                    'action' => 'detail',
+                ],
+                [
+                    'label' => 'Add',
+                    'route' => 'blogwithorm/add',
+                    'action' => 'add',
+                ],
+                [
+                    'label' => 'Edit',
+                    'route' => 'blogwithorm/add',
+                    'action' => 'edit',
+                ],
+                [
+                    'label' => 'Delete',
+                    'route' => 'blogwithorm/add',
+                    'action' => 'delete',
+                ],
+            ],
+        ],
     ],
 ];
 return [

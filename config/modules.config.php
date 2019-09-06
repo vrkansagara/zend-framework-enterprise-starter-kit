@@ -12,7 +12,9 @@ $applicationModules = [
     'DoctrineORMModule',
     'Application',
     'Album',
-    'Blog'
+    'Blog',
+    'Blogwithorm',
+    'ZendOutPress'
 ];
 
 $frameworkModule = [

@@ -27,13 +27,16 @@
     "symfony/console": "^4.3",
     "san/san-session-toolbar": "^2.0",
     "zfcampus/zf-development-mode": "^3.2",
-    "zendframework/zend-barcode": "^2.7"
+    "zendframework/zend-barcode": "^2.7",
+    "zendframework/zend-eventmanager": "^3.2",
+    "vrkansagara/zend-out-press": "dev-master"
   },
   "autoload": {
     "psr-4": {
       "Application\\": "core/Application/src/",
       "Album\\": "sample/Album/src/",
-      "Blog\\": "sample/Blog/src/"
+      "Blog\\": "sample/Blog/src/",
+      "Blogwithorm\\": "sample/blogwithorm/src/"
     }
   },
   "autoload-dev": {
@@ -61,6 +64,7 @@
       "@development-disable"
     ],
     "serve": "php -S 0.0.0.0:8090 -t public public/index.php",
-    "test": "phpunit"
+    "test": "phpunit",
+    "db": "./vendor/bin/doctrine-module"
   }
 }
