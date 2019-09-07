@@ -8,21 +8,36 @@
 use Zend\Stdlib\ArrayUtils;
 
 $applicationModules = [
-//    'DoctrineModule',
-//    'DoctrineORMModule',
+    'DoctrineModule',
+    'DoctrineORMModule',
     'Application',
     'Album',
     'Blog',
-    'Blogwithorm'
+    'Blogwithorm',
+    'User'
 ];
 
 $frameworkModule = [
-    'Zend\Router',
+    'Zend\Mvc\Plugin\FilePrg',
+    'Zend\Mvc\Plugin\FlashMessenger',
+    'Zend\Mvc\Plugin\Identity',
+    'Zend\Mvc\Plugin\Prg',
+    'Zend\Session',
     'Zend\Navigation',
+    'Zend\Cache',
     'Zend\Form',
-    'Zend\Mail',
+    'Zend\InputFilter',
+    'Zend\Filter',
     'Zend\Paginator',
+    'Zend\Hydrator',
+    'Zend\Router',
     'Zend\Db',
+    'Zend\Mail',
     'Zend\Validator',
+    'Zend\I18n',
+
 ];
 return ArrayUtils::merge($frameworkModule, $applicationModules);
+
+
+
