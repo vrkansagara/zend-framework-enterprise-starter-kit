@@ -8,12 +8,12 @@
 use Zend\Stdlib\ArrayUtils;
 
 $applicationModules = [
-    'DoctrineModule',
-    'DoctrineORMModule',
+//    'DoctrineModule',
+//    'DoctrineORMModule',
     'Application',
     'Album',
     'Blog',
-    'ZendOutPress'
+    'Blogwithorm'
 ];
 
 $frameworkModule = [

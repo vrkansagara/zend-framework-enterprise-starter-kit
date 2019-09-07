@@ -1,11 +1,6 @@
 <?php
 $this->headTitle('View Post - ' . $post->getTitle());
 
-$this->mainMenu()->setActiveItemId('home');
-
-$this->pageBreadcrumbs()->setItems([
-            'Home'=>$this->url('home')
-            ]);
         
 $form = $this->form;
 $form->get('author')->setAttributes([
@@ -22,7 +17,7 @@ $form->prepare();
 ?>
 
 <a href="
-    <?= $this->url('application', ['action'=>'index']); ?>">
+    <?= $this->url('blogwithorm', ['action'=>'index']); ?>">
     &lt;&lt; Back to list of posts
 </a>
 

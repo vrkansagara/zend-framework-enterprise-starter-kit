@@ -56,8 +56,8 @@ class PostController extends AbstractActionController
                                 
                 // Get validated form data.
                 $data = $form->getData();
-                
-                // Use post manager service to add new post to database.                
+
+                // Use post manager service to add new post to database.
                 $this->postManager->addNewPost($data);
                 
                 // Redirect the user to "index" page.
@@ -115,7 +115,7 @@ class PostController extends AbstractActionController
                 $this->postManager->addCommentToPost($post, $data);
                 
                 // Redirect the user again to "view" page.
-                return $this->redirect()->toRoute('posts', ['action'=>'view', 'id'=>$postId]);
+                return $this->redirect()->toRoute('blogwithorm/posts', ['action'=>'view', 'id'=>$postId]);
             }
         }
         
@@ -169,7 +169,7 @@ class PostController extends AbstractActionController
                 $this->postManager->updatePost($post, $data);
                 
                 // Redirect the user to "admin" page.
-                return $this->redirect()->toRoute('posts', ['action'=>'admin']);
+                return $this->redirect()->toRoute('blogwithorm/posts', ['action'=>'admin']);
             }
         } else {
             $data = [
@@ -212,7 +212,7 @@ class PostController extends AbstractActionController
         $this->postManager->removePost($post);
         
         // Redirect the user to "admin" page.
-        return $this->redirect()->toRoute('posts', ['action'=>'admin']);        
+        return $this->redirect()->toRoute('blogwithorm/posts', ['action'=>'admin']);
                 
     }
     

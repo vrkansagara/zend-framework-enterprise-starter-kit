@@ -9,25 +9,28 @@ namespace Application;
 
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
+use Zend\Mvc\MvcEvent;
+use Zend\Session\SessionManager;
 
-class Module implements AutoloaderProviderInterface, ConfigProviderInterface
+class Module implements ConfigProviderInterface
 {
     const VERSION = '1.0.0';
+
+    /**
+     * This method is called once the MVC bootstrapping is complete.
+     */
+    public function onBootstrap(MvcEvent $event)
+    {
+        $application = $event->getApplication();
+        $serviceManager = $application->getServiceManager();
+
+        // The following line instantiates the SessionManager and automatically
+        // makes the SessionManager the 'default' one.
+        $sessionManager = $serviceManager->get(SessionManager::class);
+    }
 
     public function getConfig()
     {
         return include __DIR__ . '/../config/module.config.php';
-    }
-
-    public function getAutoloaderConfig()
-    {
-        return [
-            'Zend\Loader\StandardAutoloader' => [
-                'namespaces' => [
-                    // Autoload all classes from namespace 'Test' from '/module/Test/src/Test'
-                    __NAMESPACE__ => __DIR__ . '/src/',
-                ]
-            ]
-        ];
     }
 }

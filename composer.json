@@ -12,6 +12,9 @@
   "minimum-stability": "stable",
   "prefer-stable": true,
   "require": {
+    "php": "^5.6 || ^7.0",
+    "ext-gd": "*",
+    "ext-intl": "*",
     "zendframework/zend-mvc": "^3.1",
     "doctrine/doctrine-orm-module": "^2.1",
     "zendframework/zend-navigation": "^2.9",
@@ -28,7 +31,15 @@
     "san/san-session-toolbar": "^2.0",
     "zfcampus/zf-development-mode": "^3.2",
     "zendframework/zend-barcode": "^2.7",
-    "zendframework/zend-eventmanager": "^3.2"
+    "zendframework/zend-eventmanager": "^3.2",
+    "vrkansagara/zend-out-press": "dev-master",
+    "zendframework/zend-session": "^2.8",
+    "zendframework/zend-crypt": "^3.3",
+    "zendframework/zend-math": "^3.2",
+    "zendframework/zend-authentication": "^2.7",
+    "zendframework/zend-captcha": "^2.9",
+    "zendframework/zend-mime": "^2.7",
+    "zendframework/zend-mvc-plugins": "^1.0"
   },
   "autoload": {
     "psr-4": {
@@ -42,7 +53,8 @@
     "psr-4": {
       "ApplicationTest\\": "core/Application/test/",
       "AlbumTest\\": "module/Album/test/",
-      "BlogTest\\": "module/Blog/test/"
+      "BlogTest\\": "module/Blog/test/",
+      "User\\": "sample/User/src/"
 
     }
   },

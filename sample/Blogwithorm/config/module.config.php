@@ -13,39 +13,43 @@ return [
     'router' => [
         'routes' => [
             'blogwithorm' => [
-                'type'    => Segment::class,
-                'options' => [
-                    'route'    => '/blogwithorm[/:action]',
-                    'defaults' => [
-                        'controller'    => Controller\IndexController::class,
-                        'action'        => 'index',
-                    ],
-                ],
-            ],
-            'posts' => [
-                'type'    => Segment::class,
-                'options' => [
-                    'route'    => '/posts[/:action[/:id]]',
-                    'constraints' => [
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id' => '[0-9]*'
-                    ],
-                    'defaults' => [
-                        'controller'    => Controller\PostController::class,
-                        'action'        => 'index',
-                    ],
-                ],
-            ],
-            'about' => [
                 'type' => Literal::class,
                 'options' => [
-                    'route'    => '/about',
+                    'route' => '/blogwithorm',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
-                        'action'     => 'about',
+                        'action' => 'index',
                     ],
                 ],
-            ],                                    
+                // The following allows "/blog" to match on its own if no child routes match:
+                'may_terminate' => true,
+                'child_routes' => [
+                    'posts' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route' => '/posts[/:action[/:id]]',
+                            'constraints' => [
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id' => '[0-9]*'
+                            ],
+                            'defaults' => [
+                                'controller' => Controller\PostController::class,
+                                'action' => 'index',
+                            ],
+                        ],
+                    ],
+                    'about' => [
+                        'type' => Literal::class,
+                        'options' => [
+                            'route' => '/about',
+                            'defaults' => [
+                                'controller' => Controller\IndexController::class,
+                                'action' => 'about',
+                            ],
+                        ],
+                    ],
+                ]
+            ],
         ],
     ],
     'controllers' => [

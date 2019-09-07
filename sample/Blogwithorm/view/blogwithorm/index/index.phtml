@@ -10,7 +10,7 @@ $this->headTitle('Posts');
     <?php foreach($posts as $post): ?>
 
     <h3>
-        <a href="<?= $this->url('posts', ['action'=>'view', 'id'=>$post->getId()]); ?>">
+        <a href="<?= $this->url('blogwithorm/posts', ['action'=>'view', 'id'=>$post->getId()]); ?>">
             <?= $this->escapeHtml($post->getTitle()); ?>
         </a>    
     </h3>
@@ -22,7 +22,7 @@ $this->headTitle('Posts');
         
     <p class="comments-header">
         <?= $this->escapeHtml($postManager->getCommentCountStr($post)); ?> | 
-        <a href="<?= $this->url('posts', ['action'=>'view', 'id'=>$post->getId()],
+        <a href="<?= $this->url('blogwithorm/posts', ['action'=>'view', 'id'=>$post->getId()],
                 ['fragment'=>'comment']); ?>">
             Add new comment
         </a>

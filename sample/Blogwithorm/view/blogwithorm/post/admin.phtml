@@ -1,18 +1,10 @@
-<?php
-$this->headTitle('Manage Posts');
-
-$this->mainMenu()->setActiveItemId('admin');
-
-$this->pageBreadcrumbs()->setItems([
-            'Admin'=>$this->url('home')
-            ]);
-?>
+<?php $this->headTitle('Manage Posts'); ?>
 
 <h1>Manage Posts</h1>
 
 <p>
 <a class="btn btn-default" href="
-    <?= $this->url('posts', ['action'=>'add']); ?>">
+    <?= $this->url('blogwithorm/posts', ['action'=>'add']); ?>">
     New Post
 </a>
 </p>

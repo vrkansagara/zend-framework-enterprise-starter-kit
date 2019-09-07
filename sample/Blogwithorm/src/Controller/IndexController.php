@@ -54,7 +54,7 @@ class IndexController extends AbstractActionController
         
         $adapter = new DoctrineAdapter(new ORMPaginator($query, false));
         $paginator = new Paginator($adapter);
-        $paginator->setDefaultItemCountPerPage(1);
+        $paginator->setDefaultItemCountPerPage(10);
         $paginator->setCurrentPageNumber($page);
                        
         // Get popular tags.
