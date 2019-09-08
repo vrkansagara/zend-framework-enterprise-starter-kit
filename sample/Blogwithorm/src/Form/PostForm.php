@@ -12,29 +12,28 @@ use Blogwithorm\Entity\Post;
 class PostForm extends Form
 {
     /**
-     * Constructor.     
+     * Constructor.
      */
     public function __construct()
     {
         // Define form name
         parent::__construct('post-form');
-     
+
         // Set POST method for this form
         $this->setAttribute('method', 'post');
-                
+
         $this->addElements();
-        $this->addInputFilter();  
-        
+        $this->addInputFilter();
     }
-    
+
     /**
      * This method adds elements to form (input fields and submit button).
      */
-    protected function addElements() 
+    protected function addElements()
     {
-                
+
         // Add "title" field
-        $this->add([        
+        $this->add([
             'type'  => 'text',
             'name' => 'title',
             'attributes' => [
@@ -44,36 +43,36 @@ class PostForm extends Form
                 'label' => 'Title',
             ],
         ]);
-        
+
         // Add "content" field
         $this->add([
             'type'  => 'textarea',
             'name' => 'content',
-            'attributes' => [                
+            'attributes' => [
                 'id' => 'content'
             ],
             'options' => [
                 'label' => 'Content',
             ],
         ]);
-        
+
         // Add "tags" field
         $this->add([
             'type'  => 'text',
             'name' => 'tags',
-            'attributes' => [                
+            'attributes' => [
                 'id' => 'tags'
             ],
             'options' => [
                 'label' => 'Tags',
             ],
         ]);
-        
+
         // Add "status" field
         $this->add([
             'type'  => 'select',
             'name' => 'status',
-            'attributes' => [                
+            'attributes' => [
                 'id' => 'status'
             ],
             'options' => [
@@ -84,27 +83,27 @@ class PostForm extends Form
                 ]
             ],
         ]);
-        
+
         // Add the submit button
         $this->add([
             'type'  => 'submit',
             'name' => 'submit',
-            'attributes' => [                
+            'attributes' => [
                 'value' => 'Create',
                 'id' => 'submitbutton',
             ],
         ]);
     }
-    
+
     /**
      * This method creates input filter (used for form filtering/validation).
      */
-    private function addInputFilter() 
+    private function addInputFilter()
     {
-        
-        $inputFilter = new InputFilter();        
+
+        $inputFilter = new InputFilter();
         $this->setInputFilter($inputFilter);
-        
+
         $inputFilter->add([
                 'name'     => 'title',
                 'required' => true,
@@ -112,7 +111,7 @@ class PostForm extends Form
                     ['name' => 'StringTrim'],
                     ['name' => 'StripTags'],
                     ['name' => 'StripNewlines'],
-                ],                
+                ],
                 'validators' => [
                     [
                         'name'    => 'StringLength',
@@ -123,13 +122,13 @@ class PostForm extends Form
                     ],
                 ],
             ]);
-        
+
         $inputFilter->add([
                 'name'     => 'content',
                 'required' => true,
-                'filters'  => [                    
+                'filters'  => [
                     ['name' => 'StripTags'],
-                ],                
+                ],
                 'validators' => [
                     [
                         'name'    => 'StringLength',
@@ -139,16 +138,16 @@ class PostForm extends Form
                         ],
                     ],
                 ],
-            ]);   
-        
+            ]);
+
         $inputFilter->add([
                 'name'     => 'tags',
                 'required' => true,
-                'filters'  => [                    
+                'filters'  => [
                     ['name' => 'StringTrim'],
                     ['name' => 'StripTags'],
                     ['name' => 'StripNewlines'],
-                ],                
+                ],
                 'validators' => [
                     [
                         'name'    => 'StringLength',
@@ -159,10 +158,9 @@ class PostForm extends Form
                     ],
                 ],
             ]);
-            
+
         // We do not validate the 'status' field, because it is enough to use
         // the default validator.
         // https://github.com/olegkrivtsov/using-zf3-book-samples/issues/37
     }
 }
-

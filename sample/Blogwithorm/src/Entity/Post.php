@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Entity(repositoryClass="\Blogwithorm\Repository\PostRepository")
  * @ORM\Table(name="post")
  */
-class Post 
+class Post
 {
     // Post status constants.
     const STATUS_DRAFT       = 1; // Draft.
@@ -22,32 +22,32 @@ class Post
      */
     protected $id;
 
-    /** 
-     * @ORM\Column(name="title")  
+    /**
+     * @ORM\Column(name="title")
      */
     protected $title;
 
-    /** 
-     * @ORM\Column(name="content")  
+    /**
+     * @ORM\Column(name="content")
      */
     protected $content;
 
-    /** 
-     * @ORM\Column(name="status")  
+    /**
+     * @ORM\Column(name="status")
      */
     protected $status;
 
     /**
-     * @ORM\Column(name="date_created")  
+     * @ORM\Column(name="date_created")
      */
     protected $dateCreated;
-    
+
     /**
      * @ORM\OneToMany(targetEntity="\Blogwithorm\Entity\Comment", mappedBy="post")
      * @ORM\JoinColumn(name="id", referencedColumnName="post_id")
      */
     protected $comments;
-    
+
     /**
      * @ORM\ManyToMany(targetEntity="\Blogwithorm\Entity\Tag", inversedBy="posts")
      * @ORM\JoinTable(name="post_tag",
@@ -56,21 +56,21 @@ class Post
      *      )
      */
     protected $tags;
-    
+
     /**
      * Constructor.
      */
-    public function __construct() 
+    public function __construct()
     {
-        $this->comments = new ArrayCollection();        
-        $this->tags = new ArrayCollection();        
+        $this->comments = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
 
     /**
      * Returns ID of this post.
      * @return integer
      */
-    public function getId() 
+    public function getId()
     {
         return $this->id;
     }
@@ -79,7 +79,7 @@ class Post
      * Sets ID of this post.
      * @param int $id
      */
-    public function setId($id) 
+    public function setId($id)
     {
         $this->id = $id;
     }
@@ -88,7 +88,7 @@ class Post
      * Returns title.
      * @return string
      */
-    public function getTitle() 
+    public function getTitle()
     {
         return $this->title;
     }
@@ -97,7 +97,7 @@ class Post
      * Sets title.
      * @param string $title
      */
-    public function setTitle($title) 
+    public function setTitle($title)
     {
         $this->title = $title;
     }
@@ -106,7 +106,7 @@ class Post
      * Returns status.
      * @return integer
      */
-    public function getStatus() 
+    public function getStatus()
     {
         return $this->status;
     }
@@ -115,89 +115,88 @@ class Post
      * Sets status.
      * @param integer $status
      */
-    public function setStatus($status) 
+    public function setStatus($status)
     {
         $this->status = $status;
-    }   
-    
+    }
+
     /**
      * Returns post content.
      */
-    public function getContent() 
+    public function getContent()
     {
-       return $this->content; 
+        return $this->content;
     }
-    
+
     /**
      * Sets post content.
      * @param type $content
      */
-    public function setContent($content) 
+    public function setContent($content)
     {
         $this->content = $content;
     }
-    
+
     /**
      * Returns the date when this post was created.
      * @return string
      */
-    public function getDateCreated() 
+    public function getDateCreated()
     {
         return $this->dateCreated;
     }
-    
+
     /**
      * Sets the date when this post was created.
      * @param string $dateCreated
      */
-    public function setDateCreated($dateCreated) 
+    public function setDateCreated($dateCreated)
     {
         $this->dateCreated = $dateCreated;
     }
-    
+
     /**
      * Returns comments for this post.
      * @return array
      */
-    public function getComments() 
+    public function getComments()
     {
         return $this->comments;
     }
-    
+
     /**
      * Adds a new comment to this post.
      * @param $comment
      */
-    public function addComment($comment) 
+    public function addComment($comment)
     {
         $this->comments[] = $comment;
     }
-    
+
     /**
      * Returns tags for this post.
      * @return array
      */
-    public function getTags() 
+    public function getTags()
     {
         return $this->tags;
-    }      
-    
+    }
+
     /**
      * Adds a new tag to this post.
      * @param $tag
      */
-    public function addTag($tag) 
+    public function addTag($tag)
     {
-        $this->tags[] = $tag;        
+        $this->tags[] = $tag;
     }
-    
+
     /**
      * Removes association between this post and the given tag.
      * @param type $tag
      */
-    public function removeTagAssociation($tag) 
+    public function removeTagAssociation($tag)
     {
         $this->tags->removeElement($tag);
     }
 }
-

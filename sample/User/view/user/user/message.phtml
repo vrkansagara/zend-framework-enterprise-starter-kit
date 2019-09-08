@@ -6,23 +6,22 @@ $this->headTitle('Thank You');
 <div class="col-md-offset-4 col-md-5">
 <h1>Reset Password</h1>
 
-<?php if ($id=='sent'): ?>
+<?php if ($id == 'sent') : ?>
 <p>
     Password reset instructions have been sent to your email address.
 </p>
-<?php elseif ($id=='invalid-email'): ?>
+<?php elseif ($id == 'invalid-email') : ?>
 <p>
     There is no user with such an email or the user is inactive.
 </p>
-<?php elseif ($id=='set'): ?>
+<?php elseif ($id == 'set') : ?>
 <p>
     Your new password has been set successfully.
 </p>
 <p>
     Return to <a href="<?= $this->url('login'); ?>">login page</a>.
 </p>
-<?php elseif ($id=='failed'): ?>
-
+<?php elseif ($id == 'failed') : ?>
     Invalid reset key or it may have expired. Please return 
     <a href="<?= $this->url('reset-password') ?>">here</a> and try reset your password again.
 </p>

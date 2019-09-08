@@ -16,7 +16,7 @@ class UserControllerFactory implements FactoryInterface
     {
         $entityManager = $container->get('doctrine.entitymanager.orm_default');
         $userManager = $container->get(UserManager::class);
-        
+
         // Instantiate the controller and inject dependencies
         return new UserController($entityManager, $userManager);
     }

@@ -5,20 +5,6 @@ use Zend\Mvc\Application;
 use Zend\Stdlib\ArrayUtils;
 
 /**
- * Display all errors when APPLICATION_ENV is development.
- */
-
-if (isset($_SERVER['APPLICATION_ENV']) && $_SERVER['APPLICATION_ENV'] === 'development') {
-    ini_set("error_reporting", E_ALL);
-    ini_set("display_errors", 1);
-} else {
-    ini_set("error_reporting", E_ALL & ~E_DEPRECATED & ~E_STRICT);
-    ini_set("display_errors", 0);
-    ini_set("display_startup_errors", 0);
-    ini_set("log_errors", 1);
-}
-
-/**
  * This makes our life easier when dealing with paths. Everything is relative
  * to the application root now.
  */
@@ -41,7 +27,7 @@ if (php_sapi_name() === 'cli-server') {
 // Composer autoloading
 include __DIR__ . '/../vendor/autoload.php';
 
-if (! class_exists(Application::class)) {
+if (!class_exists(Application::class)) {
     throw new RuntimeException(
         "Unable to load application.\n"
         . "- Type `composer install` if you are developing locally.\n"
@@ -53,7 +39,20 @@ if (! class_exists(Application::class)) {
 // Retrieve configuration
 $appConfig = require __DIR__ . '/../config/application.config.php';
 if (file_exists(__DIR__ . '/../config/development.config.php')) {
+    // Development mode scope.
+    ini_set("error_reporting", E_ALL);
+    ini_set("display_errors", 1);
     $appConfig = ArrayUtils::merge($appConfig, require __DIR__ . '/../config/development.config.php');
+    // Define application environment
+    defined('IS_PRODUCTION') || define('IS_PRODUCTION', false);
+    defined('IS_DEVELOPMENT') || define('IS_DEVELOPMENT', true);
+} else {
+    ini_set("error_reporting", E_ALL & ~E_DEPRECATED & ~E_STRICT);
+    ini_set("display_errors", 0);
+    ini_set("display_startup_errors", 0);
+    ini_set("log_errors", 1);
+    defined('IS_PRODUCTION') || define('IS_PRODUCTION', true);
+    defined('IS_DEVELOPMENT') || define('IS_DEVELOPMENT', false);
 }
 
 // Run the application!

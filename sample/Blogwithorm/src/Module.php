@@ -23,7 +23,6 @@ class Module implements ConfigProviderInterface
         // Register the event listener method.
         $sharedEventManager->attach(__NAMESPACE__, MvcEvent::EVENT_DISPATCH_ERROR, [$this, 'onError'], 100);
         $sharedEventManager->attach(__NAMESPACE__, MvcEvent::EVENT_RENDER_ERROR, [$this, 'onError'], 100);
-
     }
 
     // Event listener method.

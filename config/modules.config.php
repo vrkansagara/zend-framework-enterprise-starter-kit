@@ -38,6 +38,3 @@ $frameworkModule = [
 
 ];
 return ArrayUtils::merge($frameworkModule, $applicationModules);
-
-
-

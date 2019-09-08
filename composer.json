@@ -39,7 +39,9 @@
     "zendframework/zend-authentication": "^2.7",
     "zendframework/zend-captcha": "^2.9",
     "zendframework/zend-mime": "^2.7",
-    "zendframework/zend-mvc-plugins": "^1.0"
+    "zendframework/zend-mvc-plugins": "^1.0",
+    "zendframework/zend-permissions-rbac": "^3.0",
+    "zendframework/zend-serializer": "^2.9"
   },
   "autoload": {
     "psr-4": {
@@ -55,7 +57,6 @@
       "AlbumTest\\": "module/Album/test/",
       "BlogTest\\": "module/Blog/test/",
       "User\\": "sample/User/src/"
-
     }
   },
   "require-dev": {
@@ -68,11 +69,26 @@
   "scripts": {
     "cs-check": "./vendor/bin/phpcs",
     "cs-fix": "./vendor/bin/phpcbf",
-    "development-disable": "zf-development-mode disable",
-    "development-enable": "zf-development-mode enable",
+    "clear": "rm -rf data/cache/*.php && rm -rf data/cache/zfcache-*",
+    "development-disable": [
+      "zf-development-mode disable",
+      "@clear"
+    ],
+    "development-enable": [
+      "zf-development-mode enable",
+      "@clear"
+    ],
     "development-status": "zf-development-mode status",
     "post-create-project-cmd": [
-      "@development-disable"
+      "@development-disable",
+      "@clear"
+    ],
+    "post-update-cmd": [
+      "@clear"
+    ],
+    "pre-install-cmd": [
+      "@development-disable",
+      "@clear"
     ],
     "serve": "php -S 0.0.0.0:8090 -t public public/index.php",
     "test": "phpunit",

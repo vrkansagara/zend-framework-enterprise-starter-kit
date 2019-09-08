@@ -135,7 +135,7 @@ class Module
 
         $declaration = '';
 
-        if ($r->isAbstract() && !$r->isInterface()) {
+        if ($r->isAbstract() && ! $r->isInterface()) {
             $declaration .= 'abstract ';
         }
 
@@ -147,7 +147,7 @@ class Module
             $declaration .= 'interface ';
         }
 
-        if (!$r->isInterface()) {
+        if (! $r->isInterface()) {
             $declaration .= 'class ';
         }
 
@@ -160,7 +160,7 @@ class Module
                 : ((0 === strpos($parent->getName(), $r->getNamespaceName()))
                     ? substr($parent->getName(), strlen($r->getNamespaceName()) + 1)
                     : '\\' . $parent->getName());
-        } elseif ($parent && !$r->getNamespaceName()) {
+        } elseif ($parent && ! $r->getNamespaceName()) {
             $parentName = '\\' . $parent->getName();
         }
 

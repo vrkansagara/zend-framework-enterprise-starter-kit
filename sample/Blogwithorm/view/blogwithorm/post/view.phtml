@@ -1,23 +1,23 @@
 <?php
 $this->headTitle('View Post - ' . $post->getTitle());
 
-        
+
 $form = $this->form;
 $form->get('author')->setAttributes([
-    'class'=>'form-control', 
-    'placeholder'=>'Author\'s name'
+    'class' => 'form-control',
+    'placeholder' => 'Author\'s name'
     ]);
 $form->get('comment')->setAttributes([
-    'class'=>'form-control',
-    'rows'=>6, 
-    'placeholder'=>'Text'
+    'class' => 'form-control',
+    'rows' => 6,
+    'placeholder' => 'Text'
     ]);
-$form->get('submit')->setAttributes(['class'=>'btn btn-primary']);
-$form->prepare();        
+$form->get('submit')->setAttributes(['class' => 'btn btn-primary']);
+$form->prepare();
 ?>
 
 <a href="
-    <?= $this->url('blogwithorm', ['action'=>'index']); ?>">
+    <?= $this->url('blogwithorm', ['action' => 'index']); ?>">
     &lt;&lt; Back to list of posts
 </a>
 
@@ -43,8 +43,7 @@ $form->prepare();
 
 <h3><?= $this->escapeHtml($postManager->getCommentCountStr($post)); ?></h3>
 
-<?php foreach ($post->getComments() as $comment): ?>
-
+<?php foreach ($post->getComments() as $comment) : ?>
 <hr>
 
 <p>

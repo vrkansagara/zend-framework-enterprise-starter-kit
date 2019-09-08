@@ -3,6 +3,7 @@
 return [
     // Development time modules
     'modules' => [
+        'Zend\Serializer',
         'Zend\Mvc\Plugin\FilePrg',
         'Zend\Mvc\Plugin\FlashMessenger',
         'Zend\Mvc\Plugin\Identity',
@@ -22,7 +23,6 @@ return [
         'Zend\I18n',
         'ZendDeveloperTools',
         'SanSessionToolbar',
-        //    'EdpSuperluminal'
         'DoctrineModule',
         'DoctrineORMModule',
 //        'ZendOutPress',

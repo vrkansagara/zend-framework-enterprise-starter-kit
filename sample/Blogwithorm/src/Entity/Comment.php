@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="comment")
  */
-class Comment 
+class Comment
 {
     /**
      * @ORM\Id
@@ -17,18 +17,18 @@ class Comment
      */
     protected $id;
 
-    /** 
-     * @ORM\Column(name="content")  
+    /**
+     * @ORM\Column(name="content")
      */
     protected $content;
 
-    /** 
-     * @ORM\Column(name="author")  
+    /**
+     * @ORM\Column(name="author")
      */
     protected $author;
-    
-    /** 
-     * @ORM\Column(name="date_created")  
+
+    /**
+     * @ORM\Column(name="date_created")
      */
     protected $dateCreated;
 
@@ -37,12 +37,12 @@ class Comment
      * @ORM\JoinColumn(name="post_id", referencedColumnName="id")
      */
     protected $post;
-    
+
     /**
      * Returns ID of this comment.
      * @return integer
      */
-    public function getId() 
+    public function getId()
     {
         return $this->id;
     }
@@ -51,16 +51,16 @@ class Comment
      * Sets ID of this comment.
      * @param int $id
      */
-    public function setId($id) 
+    public function setId($id)
     {
         $this->id = $id;
     }
-    
+
     /**
      * Returns comment text.
      * @return string
      */
-    public function getContent() 
+    public function getContent()
     {
         return $this->content;
     }
@@ -69,16 +69,16 @@ class Comment
      * Sets comment text.
      * @param string $comment
      */
-    public function setContent($comment) 
+    public function setContent($comment)
     {
         $this->content = $comment;
     }
-    
+
     /**
      * Returns author's name.
      * @return string
      */
-    public function getAuthor() 
+    public function getAuthor()
     {
         return $this->author;
     }
@@ -87,7 +87,7 @@ class Comment
      * Sets author's name.
      * @param string $author
      */
-    public function setAuthor($author) 
+    public function setAuthor($author)
     {
         $this->author = $author;
     }
@@ -96,37 +96,36 @@ class Comment
      * Returns the date when this post was created.
      * @return string
      */
-    public function getDateCreated() 
+    public function getDateCreated()
     {
         return $this->dateCreated;
     }
-    
+
     /**
      * Sets the date when this post was created.
      * @param string $dateCreated
      */
-    public function setDateCreated($dateCreated) 
+    public function setDateCreated($dateCreated)
     {
         $this->dateCreated = (string)$dateCreated;
     }
-    
+
     /*
      * Returns associated post.
      * @return \Blogwithorm\Entity\Post
      */
-    public function getPost() 
+    public function getPost()
     {
         return $this->post;
     }
-    
+
     /**
      * Sets associated post.
      * @param \Blogwithorm\Entity\Post $post
      */
-    public function setPost($post) 
+    public function setPost($post)
     {
         $this->post = $post;
         $post->addComment($this);
     }
 }
-

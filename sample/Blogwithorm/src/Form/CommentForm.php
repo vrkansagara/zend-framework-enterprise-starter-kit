@@ -11,28 +11,27 @@ use Zend\InputFilter\InputFilter;
 class CommentForm extends Form
 {
     /**
-     * Constructor.     
+     * Constructor.
      */
     public function __construct()
     {
         // Define form name
         parent::__construct('comment-form');
-     
+
         // Set POST method for this form
         $this->setAttribute('method', 'post');
-                
+
         $this->addElements();
-        $this->addInputFilter();  
-        
+        $this->addInputFilter();
     }
-    
+
     /**
      * This method adds elements to form (input fields and submit button).
      */
-    protected function addElements() 
+    protected function addElements()
     {
         // Add "author" field
-        $this->add([        
+        $this->add([
             'type'  => 'text',
             'name' => 'author',
             'attributes' => [
@@ -42,9 +41,9 @@ class CommentForm extends Form
                 'label' => 'Author',
             ],
         ]);
-        
+
         // Add "comment" field
-        $this->add([            
+        $this->add([
             'type'  => 'textarea',
             'name' => 'comment',
             'attributes' => [
@@ -54,33 +53,33 @@ class CommentForm extends Form
                 'label' => 'Comment',
             ],
         ]);
-                
+
         // Add the submit button
         $this->add([
             'type'  => 'submit',
             'name' => 'submit',
-            'attributes' => [                
+            'attributes' => [
                 'value' => 'Save',
                 'id' => 'submitbutton',
             ],
         ]);
     }
-    
+
     /**
      * This method creates input filter (used for form filtering/validation).
      */
-    private function addInputFilter() 
+    private function addInputFilter()
     {
-        
-        $inputFilter = new InputFilter();        
+
+        $inputFilter = new InputFilter();
         $this->setInputFilter($inputFilter);
-        
+
         $inputFilter->add([
                 'name'     => 'author',
                 'required' => true,
-                'filters'  => [                    
+                'filters'  => [
                     ['name' => 'StringTrim'],
-                ],                
+                ],
                 'validators' => [
                     [
                         'name'    => 'StringLength',
@@ -91,13 +90,13 @@ class CommentForm extends Form
                     ],
                 ],
             ]);
-        
+
         $inputFilter->add([
                 'name'     => 'comment',
                 'required' => true,
-                'filters'  => [                    
+                'filters'  => [
                     ['name' => 'StripTags'],
-                ],                
+                ],
                 'validators' => [
                     [
                         'name'    => 'StringLength',
@@ -107,7 +106,6 @@ class CommentForm extends Form
                         ],
                     ],
                 ],
-            ]);   
+            ]);
     }
 }
-

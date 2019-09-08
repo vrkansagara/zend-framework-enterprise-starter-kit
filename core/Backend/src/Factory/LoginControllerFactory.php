@@ -20,5 +20,4 @@ class LoginControllerFactory implements FactoryInterface
 
         return new LoginController($footerScript);
     }
-
 }

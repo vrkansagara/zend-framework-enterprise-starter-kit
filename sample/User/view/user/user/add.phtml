@@ -4,34 +4,40 @@ $this->headTitle('Add User');
 $this->mainMenu()->setActiveItemId('users');
 
 $this->pageBreadcrumbs()->setItems([
-            'Home'=>$this->url('home'),
-            'Manage Users'=>$this->url('users'),
-            'Add User'=>$this->url('users', ['action'=>'add'])
+            'Home' => $this->url('home'),
+            'Manage Users' => $this->url('users'),
+            'Add User' => $this->url('users', ['action' => 'add'])
             ]);
 
 $form->get('email')->setAttributes([
-    'class'=>'form-control', 
-    'placeholder'=>'name@example.com'
+    'class' => 'form-control',
+    'placeholder' => 'name@example.com'
     ]);
 
 $form->get('full_name')->setAttributes([
-    'class'=>'form-control', 
-    'placeholder'=>'John Doe'
+    'class' => 'form-control',
+    'placeholder' => 'John Doe'
     ]);
 
 $form->get('status')->setAttributes([
-    'class'=>'form-control'
+    'class' => 'form-control'
     ]);
 
 $form->get('password')->setAttributes([
-    'class'=>'form-control'
+    'class' => 'form-control',
+    'placeholder' => 'Enter password',
     ]);
 
 $form->get('confirm_password')->setAttributes([
-    'class'=>'form-control'
+    'class' => 'form-control',
+    'placeholder' => 'Retype password',
     ]);
 
-$form->get('submit')->setAttributes(['class'=>'btn btn-primary']);
+$form->get('roles')->setAttributes([
+    'class' => 'form-control'
+    ]);
+
+$form->get('submit')->setAttributes(['class' => 'btn btn-primary']);
 
 $form->prepare();
 ?>
@@ -76,6 +82,14 @@ $form->prepare();
             <?= $this->formElementErrors($form->get('status')); ?>                  
         </div>
         
+        <div class="form-group">
+            <?= $this->formLabel($form->get('roles')); ?>
+            <?= $this->formElement($form->get('roles')); ?>
+            <?= $this->formElementErrors($form->get('roles')); ?>                  
+        </div>
+
+        <?= $this->formElement($form->get('csrf')); ?>
+        <?= $this->formElementErrors($form->get('csrf')); ?>
         <?= $this->formElement($form->get('submit')); ?>
         
         <?= $this->form()->closeTag(); ?>

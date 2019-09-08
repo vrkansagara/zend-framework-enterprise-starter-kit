@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Entity
  * @ORM\Table(name="tag")
  */
-class Tag 
+class Tag
 {
     /**
      * @ORM\Id
@@ -18,8 +18,8 @@ class Tag
      */
     protected $id;
 
-    /** 
-     * @ORM\Column(name="name") 
+    /**
+     * @ORM\Column(name="name")
      */
     protected $name;
 
@@ -27,20 +27,20 @@ class Tag
      * @ORM\ManyToMany(targetEntity="\Blogwithorm\Entity\Post", mappedBy="tags")
      */
     protected $posts;
-    
+
     /**
      * Constructor.
      */
-    public function __construct() 
-    {        
-        $this->posts = new ArrayCollection();        
+    public function __construct()
+    {
+        $this->posts = new ArrayCollection();
     }
 
     /**
      * Returns ID of this tag.
      * @return integer
      */
-    public function getId() 
+    public function getId()
     {
         return $this->id;
     }
@@ -49,7 +49,7 @@ class Tag
      * Sets ID of this tag.
      * @param int $id
      */
-    public function setId($id) 
+    public function setId($id)
     {
         $this->id = $id;
     }
@@ -58,7 +58,7 @@ class Tag
      * Returns name.
      * @return string
      */
-    public function getName() 
+    public function getName()
     {
         return $this->name;
     }
@@ -67,27 +67,26 @@ class Tag
      * Sets name.
      * @param string $name
      */
-    public function setName($name) 
+    public function setName($name)
     {
         $this->name = $name;
     }
-    
+
     /**
      * Returns posts which have this tag.
      * @return type
      */
-    public function getPosts() 
+    public function getPosts()
     {
         return $this->posts;
     }
-    
+
     /**
      * Adds a post which has this tag.
      * @param type $post
      */
-    public function addPost($post) 
+    public function addPost($post)
     {
-        $this->posts[] = $post;        
+        $this->posts[] = $post;
     }
 }
-

@@ -32,20 +32,4 @@ class IndexController extends AbstractActionController
     {
         return new ViewModel();
     }
-    /**
-     * The "settings" action displays the info about currently logged in user.
-     */
-    public function settingsAction()
-    {
-        // Use the CurrentUser controller plugin to get the current user.
-        $user = $this->currentUser();
-
-        if ($user==null) {
-            throw new \Exception('Not logged in');
-        }
-
-        return new ViewModel([
-            'user' => $user
-        ]);
-    }
 }

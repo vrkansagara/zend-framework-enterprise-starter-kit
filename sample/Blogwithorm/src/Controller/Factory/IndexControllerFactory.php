@@ -16,12 +16,8 @@ class IndexControllerFactory implements FactoryInterface
     {
         $entityManager = $container->get('doctrine.entitymanager.orm_default');
         $postManager = $container->get(PostManager::class);
-        
+
         // Instantiate the controller and inject dependencies
         return new IndexController($entityManager, $postManager);
     }
 }
-
-
-
-

@@ -16,10 +16,8 @@ class PostControllerFactory implements FactoryInterface
     {
         $entityManager = $container->get('doctrine.entitymanager.orm_default');
         $postManager = $container->get(PostManager::class);
-        
+
         // Instantiate the controller and inject dependencies
         return new PostController($entityManager, $postManager);
     }
 }
-
-

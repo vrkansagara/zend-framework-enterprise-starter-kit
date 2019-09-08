@@ -17,6 +17,30 @@ use Zend\ServiceManager\Factory\InvokableFactory;
 $navigation = [
     'default' => [
         [
+            'label' => 'User Profile',
+            'route' => 'profile',
+        ],
+        [
+            'label' => 'Roles',
+            'route' => 'roles'
+        ],
+        [
+            'label' => 'Permissions',
+            'route' => 'permissions'
+        ],
+        [
+            'label' => 'Users',
+            'route' => 'users'
+        ],
+        [
+            'label' => 'Logout',
+            'route' => 'logout'
+        ],
+        [
+            'label' => 'Login',
+            'route' => 'login'
+        ],
+        [
             'label' => 'Home',
             'route' => 'home'
         ],
@@ -115,24 +139,14 @@ $navigation = [
     ],
 ];
 return [
-    // The 'access_filter' key is used by the User module to restrict or permit
-    // access to certain controller actions for unauthorized visitors.
     'access_filter' => [
         'options' => [
-            // The access filter can work in 'restrictive' (recommended) or 'permissive'
-            // mode. In restrictive mode all controller actions must be explicitly listed
-            // under the 'access_filter' config key, and access is denied to any not listed
-            // action for not logged in users. In permissive mode, if an action is not listed
-            // under the 'access_filter' key, access to it is permitted to anyone (even for
-            // not logged in users. Restrictive mode is more secure and recommended to use.
             'mode' => 'restrictive'
         ],
         'controllers' => [
             Controller\IndexController::class => [
                 // Allow anyone to visit "index" and "about" actions
-                ['actions' => ['index', 'about'], 'allow' => '*'],
-                // Allow authorized users to visit "settings" action
-                ['actions' => ['settings'], 'allow' => '@']
+                ['actions' => ['index'], 'allow' => '*'],
             ],
         ]
     ],
@@ -222,7 +236,7 @@ return [
     'service_manager' => [
         'factories' => [
             Service\MailSender::class => InvokableFactory::class,
-            Service\ImageManager::class => InvokableFactory::class
+            Service\ImageManager::class => InvokableFactory::class,
         ],
     ],
     'view_helpers' => [
@@ -251,8 +265,8 @@ return [
     ],    // The following key allows to define custom styling for FlashMessenger view helper.
     'view_helper_config' => [
         'flashmessenger' => [
-            'message_open_format'      => '<div%s><ul><li>',
-            'message_close_string'     => '</li></ul></div>',
+            'message_open_format' => '<div%s><ul><li>',
+            'message_close_string' => '</li></ul></div>',
             'message_separator_string' => '</li><li>'
         ]
     ],
