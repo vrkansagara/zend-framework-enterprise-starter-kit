@@ -14,20 +14,6 @@ class IndexController extends AbstractActionController
 {
 
 
-    /**
-     * Entity manager.
-     * @var Doctrine\ORM\EntityManager
-     */
-    private $entityManager;
-
-    /**
-     * Constructor. Its purpose is to inject dependencies into the controller.
-     */
-    public function __construct($entityManager)
-    {
-        $this->entityManager = $entityManager;
-    }
-
     public function indexAction()
     {
         return new ViewModel();

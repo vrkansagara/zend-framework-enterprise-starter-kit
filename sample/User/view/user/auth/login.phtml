@@ -8,7 +8,7 @@ $form->get('email')->setAttributes([
     'placeholder' => 'Email address',
     'required' => true,
     'autofocus' => true
-    ])
+])
     ->setLabelAttributes([
         'class' => 'sr-only'
     ]);
@@ -17,7 +17,7 @@ $form->get('password')->setAttributes([
     'class' => 'form-control',
     'placeholder' => 'Password',
     'required' => true,
-    ])
+])
     ->setLabelAttributes([
         'class' => 'sr-only'
     ]);
@@ -28,10 +28,10 @@ $form->get('password')->setAttributes([
         <form class="form-signin" method="post">
             <h2 class="form-signin-heading">Please sign in</h2>
             <?php if ($isLoginError) : ?>
-            <div class="alert alert-warning" role="alert">
-                Incorrect login and/or password. 
-                <a href="<?= $this->url('reset-password') ?>">Forgot password?</a>
-            </div>
+                <div class="alert alert-warning" role="alert">
+                    Incorrect login and/or password.
+                    <a href="<?= $this->url('reset-password') ?>">Forgot password?</a>
+                </div>
             <?php endif; ?>
             <?= $this->formLabel($form->get('email')); ?>
             <?= $this->formElement($form->get('email')); ?>

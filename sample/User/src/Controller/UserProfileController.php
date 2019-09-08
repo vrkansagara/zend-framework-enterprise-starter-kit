@@ -3,7 +3,6 @@
 
 namespace User\Controller;
 
-
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
@@ -25,5 +24,4 @@ class UserProfileController extends AbstractActionController
             'user' => $user
         ]);
     }
-
 }

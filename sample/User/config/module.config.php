@@ -180,6 +180,9 @@ return [
                 // Allow access to authenticated users having "permission.manage" permission.
                 ['actions' => '*', 'allow' => '+permission.manage']
             ],
+            Controller\UserProfileController::class => [
+                ['actions' => ['index'], 'allow' => '*'],
+            ],
         ]
     ],
     'service_manager' => [
